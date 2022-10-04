@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -12,22 +13,7 @@ public class Main {
         for(int i=0; i<N; i++){
             score[i] = sc.nextInt();
         }
-        //카운팅 정렬 사용해보기
-        //각각 배열에 값을 카운트 배열에 카운트하기 ex) score[0]의 요소가 100이면 count[100]의 1씩증가.
-        for(int i=0; i<score.length; i++){
-            count[score[i]]++;
-        }
-        //누적 합 해주기
-        for(int i=1; i<count.length; i++){
-            count[i] += count[i-1];
-        }
-        //i번째 원소에 1씩 감소시킨후 결과 배열에 저장
-        //뒤에서부터 정렬할 수록 좋다
-        for(int i=score.length-1; i>=0; i--){
-            int value = score[i];
-            count[value]--;
-            result[count[value]] = value;
-        }
-        System.out.println(result[result.length-k]);
+        Arrays.sort(score);
+        System.out.println(score[score.length-k]);
     }
 }
