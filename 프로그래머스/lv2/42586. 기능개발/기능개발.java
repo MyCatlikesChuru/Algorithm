@@ -15,7 +15,6 @@ class Solution {
         while (true){
             int progress = queue.poll();
             if(progress>buff) {
-                System.out.println(progress);
                 arrayList.add(cnt);
                 cnt = 0;
                 buff = progress;
