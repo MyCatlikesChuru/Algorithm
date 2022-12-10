@@ -1,3 +1,3 @@
-# Beakjoon_algorithm
+# Algorithm
 
-백준 알고리즘 문제 레파지토리
+알고리즘 문제 레파지토리
