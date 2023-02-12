@@ -1,19 +1,23 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 class Solution {
     public boolean solution(String[] phone_book) {
-        
         Arrays.sort(phone_book);
-        
-        for(int i=0; i<phone_book.length-1; i++){
+        var ref = new Object() {
+            String startsWith = phone_book[0];
+        };
+        //
+        boolean result = Arrays.stream(phone_book)
+                .filter(s -> !s.equals(ref.startsWith))
+                .map(phone -> {
+                    if (phone.startsWith(ref.startsWith)) return "false";
+                    ref.startsWith = phone;
+                    return "true";
+                })
+                .collect(Collectors.toList())
+                .contains("false");
 
-            if(phone_book[i+1].startsWith(phone_book[i])){
-                return false;
-            }
-            
-            
-        }
-      
-        return true;
+        return !result;
     }
 }
