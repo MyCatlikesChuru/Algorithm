@@ -9,7 +9,7 @@ class Solution {
         // commands 배열 길이만큼 순회를 한다.
         for (int i=0; i<commands.length; i++) {
             int[] cutArray = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
-            Arrays.sort(cutArray);
+            if(cutArray.length >=2) Arrays.sort(cutArray);
             answer[i] = cutArray[commands[i][2]-1];
         }
         
