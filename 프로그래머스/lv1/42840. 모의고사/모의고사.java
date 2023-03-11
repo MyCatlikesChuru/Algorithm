@@ -13,12 +13,10 @@ class Solution {
             if(supojaThree[i % supojaThree.length] == answers[i]) answer[2]++;
         }
 
-        int max = Arrays.stream(answer).max().getAsInt();
-
         for (int j = 0; j < answer.length; j++) {
-            if(answer[j] == max) answer[j] = j+1;
-            else answer[j] = 0;
+            if(answer[j] != 0) answer[j] = j+1;
+            else answer = Arrays.copyOf(answer, answer.length-j-1);
         }
-        return Arrays.stream(answer).filter(i -> i > 0).toArray();
+        return answer;
     }
 }
