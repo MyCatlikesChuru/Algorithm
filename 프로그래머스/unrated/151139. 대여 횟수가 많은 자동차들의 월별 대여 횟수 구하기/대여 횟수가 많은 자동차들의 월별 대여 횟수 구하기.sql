@@ -1,16 +1,16 @@
 -- 코드를 입력하세요
 SELECT 
-    MONTH(START_DATE) as MONTH,
-    CAR_ID ,
-    count(HISTORY_ID) as RECORDS
-from 
+    MONTH(START_DATE) AS MONTH,
+    CAR_ID,
+    COUNT(CAR_ID) AS RECORDS
+FROM 
     CAR_RENTAL_COMPANY_RENTAL_HISTORY
-where 
-    CAR_ID in( select CAR_ID 
-                from CAR_RENTAL_COMPANY_RENTAL_HISTORY
-                where MONTH(START_DATE) between 8 and 10
-                group by CAR_ID
-                having count(*)>=5)
-    and MONTH(START_DATE) between 8 and 10 
-group by MONTH , CAR_ID
-order by  MONTH asc, CAR_ID desc
+WHERE 
+    CAR_ID IN(SELECT CAR_ID 
+              FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+              WHERE MONTH(START_DATE) BETWEEN 8 AND 10
+              GROUP BY CAR_ID
+              HAVING COUNT(CAR_ID)>=5)
+    AND MONTH(START_DATE) BETWEEN 8 AND 10 
+GROUP BY MONTH ,CAR_ID
+ORDER BY MONTH ASC, CAR_ID DESC
